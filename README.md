@@ -1,4 +1,4 @@
-# Password Manager Application | Cybersecurity Project
+# SecurePasswordManager | Cybersecurity Project
 
 ## Overview
 This project is a secure and robust password manager application developed using Python and advanced cryptographic techniques. The goal is to provide a secure solution for storing, retrieving, and managing user credentials, while ensuring the highest levels of data protection and confidentiality.
@@ -7,7 +7,7 @@ This project is a secure and robust password manager application developed using
 
 - **Secure Master Password Management**: Utilizes **Argon2** hashing for secure storage of the master password, offering protection against brute-force and rainbow table attacks.
 - **Encryption & Decryption**: Implements **AES-256** encryption to protect stored passwords in the database. Passwords are securely encrypted using keys derived from the master password and a salt.
-- **Password Key Derivation**: Uses **scrypt** for generating encryption keys from the master password and salt to ensure secure password storage and retrieval.
+- **Password Key Derivation**: Uses **scrypt** for generating AES-256 encryption keys from the master password and salt to ensure secure password storage and retrieval.
 - **Password Generator**: Provides a tool for generating strong, random passwords of configurable lengths, improving password strength and security.
 - **Password Strength Checker**: Evaluates and encourages strong password practices by assessing password length, character diversity, and estimated cracking time for improved user security.
 - **Database Management**: Configured a **MySQL** database to store encrypted password entries with seamless management of password data. Includes options to create, remove, and reconfigure the database schema.
