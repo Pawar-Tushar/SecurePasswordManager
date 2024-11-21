@@ -2,13 +2,13 @@ import mysql.connector
 from rich import print as printc
 from rich.console import Console
 console = Console()
-
+// configure your databse here
 def Dbconfig():
   try:
     db = mysql.connector.connect(
       host ="localhost",
-      user ="root",
-      passwd ="Tushar@123"
+      user ="yourusername",
+      passwd ="yourpassword"
     )
   except Exception as e:
     print("[red][!] An error occurred while trying to connect to the database[/red]")
