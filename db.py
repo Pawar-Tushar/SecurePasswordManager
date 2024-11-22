@@ -64,17 +64,16 @@ def Create():
 			break
 		printc("[yellow][-] Please try again.[/yellow]")
 
-	# Hash the MASTER PASSWORD
+	
 	ph = PasswordHasher()
 	hashed_mp = ph.hash(mp)
 	printc("[green][+][/green] Generated hash of MASTER PASSWORD")
 
 
-	# Generate a device secret
+	
 	salt = makingSalt()
 	printc("[green][+][/green] Device Secret generated")
 
-	# Add them to db  ds==salt
 	query = "INSERT INTO Password_manager.app_secrets (masterkey_hash, Salt) values (%s, %s)"
 	val = (hashed_mp, salt)
 	cursor.execute(query, val)
@@ -118,63 +117,10 @@ def Recreate():
 	Remove()
 	Create()
 	
-# if __name__ == "__main__":
-
-# 	if len(sys.argv)!=2:
-# 		print("Usage: python db.py <make/delete/remake>")
-# 		sys.exit(0)
-
-# 	if sys.argv[1] == "make":
-# 		Create()
-# 	elif sys.argv[1] == "delete":
-# 		Remove()
-# 	elif sys.argv[1] == "remake":
-# 		Recreate()
-# 	else:
-# 		print("Usage: python db.py <make/delete/remake>")
 
 
 
+Recreate()
 
-# import argon2
-# from argon2.exceptions import VerifyMismatchError
 
-# # Function to hash a password (simulating storing it in a database)
-# def hash_password(password):
-#     # Create an Argon2 PasswordHasher instance
-#     argon2_hasher = argon2.PasswordHasher()
-#     # Hash the password
-#     hashed_password = argon2_hasher.hash(password)
-#     return hashed_password
 
-# # Function to verify entered password against the stored hashed password
-# def verify_password(stored_hashed_password, entered_password):
-#     # Create an Argon2 PasswordHasher instance again for verification
-#     argon2_hasher = argon2.PasswordHasher()
-#     try:
-#         # Verify the entered password against the stored hashed password
-#         argon2_hasher.verify(stored_hashed_password, entered_password)
-#         return True  # Passwords match
-#     except VerifyMismatchError:
-#         return False  # Passwords do not match
-
-# # Simulate storing and verifying passwords
-# def main():
-#     # Step 1: Hash the password (Simulating the password storage process)
-#     password = "user_password"  # Password from the user during registration or first-time setup
-#     stored_hashed_password ="$argon2id$v=19$m=65536,t=3,p=4$5mUlxRkyIrZQpTznU98g1w$7ooUjhFLzK7UkZzxZjtsa8cF1H0eZIvwI5pY0NSuSKI"  # Store this hash in the database
-    
-#     print("Stored Hashed Password:", stored_hashed_password)
-
-#     # Step 2: Verify the password when the user tries to log in
-#     entered_password = "use r_password"  # Password entered by the user during login
-    
-#     # Verify the entered password against the stored hashed password
-#     if verify_password(stored_hashed_password, entered_password):
-#         print("Correct password, proceed with login.")
-#     else:
-#         print("Incorrect password, access denied.")
-
-# # Run the script
-# if __name__ == "__main__":
-#     main()
